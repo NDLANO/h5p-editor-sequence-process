@@ -43,7 +43,7 @@ export default class SequenceProcess {
    * Initialize.
    */
   initialize() {
-    this.statementsList = this.findField('statementsList/statementsList', this.fieldInstance);    
+    this.statementsList = this.findField('statementsList/statementsList', this.fieldInstance);
 
     this.statementsList.on('addedItem', (event) => {
       this.handleStatementAdded(event.data);
@@ -58,9 +58,8 @@ export default class SequenceProcess {
 
   /**
    * Handle added property in list.
-   * @param {object} property Added property.
    */
-  handleStatementAdded(statement) {
+  handleStatementAdded() {
     clearTimeout(this.mouseUpTimeout);
 
     this.dropzonesList.addItem();

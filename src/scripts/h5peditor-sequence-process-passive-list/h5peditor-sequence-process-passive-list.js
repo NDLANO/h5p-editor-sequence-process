@@ -31,7 +31,7 @@ export default class SequenceProcessPassiveList {
    */
   overrideColorSelectorValidationInDropzoneGroup(groupInstance) {
     groupInstance.children?.forEach((fieldInstance) => {
-      this.overrideColorSelectorValidation(fieldInstance)
+      this.overrideColorSelectorValidation(fieldInstance);
 
       if (fieldInstance.field?.name === 'enumeration') {
         /*
@@ -46,7 +46,8 @@ export default class SequenceProcessPassiveList {
 
   /**
    * Override color selector validation to allow empty values if configured.
-   * Workaround for bug in widget, @see https://github.com/h5p/h5p-editor-color-selector/pull/5
+   * Workaround for bug in widget.
+   * @see https://github.com/h5p/h5p-editor-color-selector/pull/5
    * @param {object} fieldInstance H5P field instance.
    */
   overrideColorSelectorValidation(fieldInstance) {
@@ -61,7 +62,7 @@ export default class SequenceProcessPassiveList {
       }
 
       return originalValidate();
-    }
+    };
   }
 
   /**

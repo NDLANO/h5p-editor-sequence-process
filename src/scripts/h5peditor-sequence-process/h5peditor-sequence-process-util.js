@@ -4,22 +4,22 @@
  * @returns {object} Merged objects.
  */
 export const extend = () => {
-    for (let i = 1; i < arguments.length; i++) {
-        for (let key in arguments[i]) {
-        if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
-            if (
-            typeof arguments[0][key] === 'object' &&
+  for (let i = 1; i < arguments.length; i++) {
+    for (let key in arguments[i]) {
+      if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+        if (
+          typeof arguments[0][key] === 'object' &&
             typeof arguments[i][key] === 'object'
-            ) {
-            this.extend(arguments[0][key], arguments[i][key]);
-            }
-            else {
-            arguments[0][key] = arguments[i][key];
-            }
+        ) {
+          this.extend(arguments[0][key], arguments[i][key]);
         }
+        else {
+          arguments[0][key] = arguments[i][key];
         }
+      }
     }
-    return arguments[0];
+  }
+  return arguments[0];
 };
 
 /**
@@ -28,8 +28,8 @@ export const extend = () => {
  * @returns {string} Output string.
  */
 export const htmlDecode = (input) => {
-    const dparser = new DOMParser().parseFromString(input, 'text/html');
-    return dparser.documentElement.textContent;
+  const dparser = new DOMParser().parseFromString(input, 'text/html');
+  return dparser.documentElement.textContent;
 };
 
 /**
@@ -41,28 +41,28 @@ export const htmlDecode = (input) => {
  * @param {number} [repeat] Number of calls for child.
  */
 export const waitForChild = (parent, childName, callback, timeout = 200, repeat = 50) => {
-    if (
-        typeof parent !== 'object' ||
+  if (
+    typeof parent !== 'object' ||
         typeof childName !== 'string' ||
         typeof callback !== 'function'
-    ) {
-        return;
-    }
+  ) {
+    return;
+  }
 
-    if (parent[childName] !== undefined) {
-        callback();
-        return; // Child is found
-    }
+  if (parent[childName] !== undefined) {
+    callback();
+    return; // Child is found
+  }
 
-    // Limit callback timeout to 100ms
-    timeout = Math.max(100, timeout);
+  // Limit callback timeout to 100ms
+  timeout = Math.max(100, timeout);
 
-    if (repeat < 0) {
-        return; // No more tries
-    }
+  if (repeat < 0) {
+    return; // No more tries
+  }
 
-    // Try again after timeout.
-    setTimeout(() => {
-        Util.waitForChild(parent, childName, callback, timeout, repeat - 1);
-    }, timeout);
-}
+  // Try again after timeout.
+  setTimeout(() => {
+    Util.waitForChild(parent, childName, callback, timeout, repeat - 1);
+  }, timeout);
+};
