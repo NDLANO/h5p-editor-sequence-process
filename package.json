@@ -1,6 +1,5 @@
 {
   "name": "h5p-editor-sequence-process",
-  "version": "1.0.0",
   "description": "Sequence process editor",
   "private": true,
   "scripts": {
